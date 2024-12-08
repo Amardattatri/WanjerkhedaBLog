@@ -3,6 +3,7 @@ package com.wanjerkheda.blog.controller;
 import com.wanjerkheda.blog.entity.Article;
 import com.wanjerkheda.blog.service.ArticleService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,11 @@ public class AdminController {
 
     private final ArticleService articleService;
 
+    @Value("${ADMIN_USERNAME}")
+    private String adminUserName;
+    @Value("${ADMIN_PASSWORD}")
+    private String adminPassword;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -26,7 +32,7 @@ public class AdminController {
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password, HttpSession httpSession) {
-        if ("amar".equals(username) && "amar".equals(password)) {
+        if (adminUserName.equals(username) && adminPassword.equals(password)) {
             httpSession.setAttribute("user", username);
             return "redirect:/admin/dashboard";
         }
