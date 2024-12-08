@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Article Dashboard</h1>
+    <a href="/admin/add">Add New Article</a>
+</header>
+<ul>
+    <li th:each="article : ${articles}">
+        <span th:text = "${article.title}"></span>
+        <a th:href="@{/admin/edit/{title}(title=${article.title.replace(' ','_')})}">Edit</a>
+        <a th:href="@{/admin/delete/{title}(title=${article.title.replace(' ','_')})}">Delete</a>
+    </li>
+</ul>
+<a href="/">Log-Out</a>
+</body>
+</html>

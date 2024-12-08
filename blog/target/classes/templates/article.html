@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text = "${article.title}"></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text = "${article.title}"> </h1>
+<p  th:text = "${article.content}"></p>
+<p><strong>Date: </strong> <span th:text = "${article.date}"></span> </p>
+<a href="/">Back to Home</a>
+</body>
+</html>

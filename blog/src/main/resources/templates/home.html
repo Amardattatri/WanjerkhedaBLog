@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Wanjerkheda Blog</h1>
+<ul>
+    <li th:each= "article : ${articles}">
+        <a th:href = "@{/article/{title}(title=${article.title.replace(' ','_')})}">
+            <span th:text = "${article.title}"></span>
+        </a> -  <span th:text = "${article.date}"></span>
+    </li>
+</ul>
+<a href="/admin/login">Admin login</a>
+</body>
+</html>
