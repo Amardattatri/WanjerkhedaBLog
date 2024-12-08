@@ -18,6 +18,12 @@ public class FileUtil {
 
     private static final String DIRECTORY = "articles/";
 
+    static {
+        File directory = new File(DIRECTORY);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+    }
 
     public static List<Article> readArticles() {
         List<Article> articleList = new ArrayList<>();
@@ -38,8 +44,6 @@ public class FileUtil {
         return articleList;
     }
 
-
-
     public static void writeArticle(Article article) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
@@ -55,7 +59,7 @@ public class FileUtil {
     }
 
     public static void deleteArticle(String title) {
-        String fileName =  title.replace(" ", "_") + ".json";
+        String fileName = title.replace(" ", "_") + ".json";
         try {
             Files.list(Paths.get(DIRECTORY))
                     .forEach(file -> {
