@@ -14,15 +14,19 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
-@AllArgsConstructor
 public class AdminController {
 
     private final ArticleService articleService;
 
     @Value("${ADMIN_USERNAME}")
     private String adminUserName;
+
     @Value("${ADMIN_PASSWORD}")
     private String adminPassword;
+
+    public AdminController(ArticleService articleService) {
+        this.articleService = articleService;
+    }
 
     @GetMapping("/login")
     public String login() {
