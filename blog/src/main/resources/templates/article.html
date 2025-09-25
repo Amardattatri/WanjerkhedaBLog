@@ -1,12 +1,56 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text = "${article.title}"></title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="${article.title}">Article</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 1.1em;
+            line-height: 1.6;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        p strong {
+            color: #555;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h1 th:text = "${article.title}"> </h1>
-<p  th:text = "${article.content}"></p>
-<p><strong>Date: </strong> <span th:text = "${article.date}"></span> </p>
-<a href="/">Back to Home</a>
+    <h1 th:text="${article.title}">Article Title</h1>
+    <p th:text="${article.content}">Article content goes here...</p>
+    <p><strong>Date:</strong> <span th:text="${article.date}">2025-09-25</span></p>
+    <a href="/">Back to Home</a>
 </body>
 </html>
