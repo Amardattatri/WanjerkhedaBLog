@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        li span {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        a[href="/admin/login"] {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #dc3545;
+            text-decoration: none;
+        }
+
+        a[href="/admin/login"]:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h2>Admin Login</h2>
-<form action="#" th:action="@{/admin/login}" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-</form>
+    <h1>Wanjerkheda Blog</h1>
+    <ul>
+        <li th:each="article : ${articles}">
+            <a th:href="@{/article/{title}(title=${article.title.replace(' ','_')})}">
+                <span th:text="${article.title}">Article Title</span>
+            </a>
+            <span th:text="${article.date}">2025-09-25</span>
+        </li>
+    </ul>
+    <a href="/admin/login">Admin login</a>
 </body>
 </html>

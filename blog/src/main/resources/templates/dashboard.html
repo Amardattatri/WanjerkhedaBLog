@@ -2,7 +2,90 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        header a {
+            background-color: white;
+            color: #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            background-color: #e6e6e6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li span {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        li a {
+            margin-left: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        a[href="/"] {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #dc3545;
+            text-decoration: none;
+        }
+
+        a[href="/"]:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -11,9 +94,11 @@
 </header>
 <ul>
     <li th:each="article : ${articles}">
-        <span th:text = "${article.title}"></span>
-        <a th:href="@{/admin/edit/{title}(title=${article.title.replace(' ','_')})}">Edit</a>
-        <a th:href="@{/admin/delete/{title}(title=${article.title.replace(' ','_')})}">Delete</a>
+        <span th:text="${article.title}">Article Title</span>
+        <div>
+            <a th:href="@{/admin/edit/{title}(title=${article.title.replace(' ','_')})}">Edit</a>
+            <a th:href="@{/admin/delete/{title}(title=${article.title.replace(' ','_')})}">Delete</a>
+        </div>
     </li>
 </ul>
 <a href="/">Log-Out</a>
