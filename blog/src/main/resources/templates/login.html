@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title>Login</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f4f6f8;
             margin: 0;
             padding: 30px;
             color: #333;
         }
 
-        h1 {
+        h2 {
             text-align: center;
-            font-size: 2em;
-            margin-bottom: 30px;
+            font-size: 1.8em;
+            margin-bottom: 25px;
             color: #2c3e50;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            max-width: 800px;
+        form {
+            max-width: 400px;
             margin: 0 auto;
-        }
-
-        li {
             background-color: #fff;
-            margin-bottom: 15px;
-            padding: 15px 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        li a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-            font-size: 1.1em;
+        div {
+            margin-bottom: 20px;
         }
 
-        li a:hover {
-            text-decoration: underline;
-        }
-
-        li span {
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        a[href="/admin/login"] {
+        label {
             display: block;
-            text-align: center;
-            margin-top: 40px;
+            margin-bottom: 8px;
             font-weight: bold;
-            color: #dc3545;
-            text-decoration: none;
+            color: #555;
         }
 
-        a[href="/admin/login"]:hover {
-            text-decoration: underline;
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>Wanjerkheda Blog</h1>
-    <ul>
-        <li th:each="article : ${articles}">
-            <a th:href="@{/article/{title}(title=${article.title.replace(' ','_')})}">
-                <span th:text="${article.title}">Article Title</span>
-            </a>
-            <span th:text="${article.date}">2025-09-25</span>
-        </li>
-    </ul>
-    <a href="/admin/login">Admin login</a>
+    <h2>Admin Login</h2>
+    <form action="#" th:action="@{/admin/login}" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 </body>
 </html>
